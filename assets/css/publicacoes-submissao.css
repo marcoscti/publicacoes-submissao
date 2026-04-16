@@ -93,6 +93,7 @@
   max-height: 522px;
   object-fit: cover;
   display: block;
+  aspect-ratio: 9 / 16;
 }
 
 .publicacoes-card-body {
