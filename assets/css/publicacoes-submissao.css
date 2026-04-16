@@ -77,7 +77,11 @@
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
-
+@media (max-width: 768px) {
+  .publicacoes-card {
+    max-width: 100%;
+  }
+}
 .publicacoes-card-media {
   width: 100%;
   overflow: hidden;

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'PUBLICACOES_SUBMISSAO_VERSION', '1.0.2' );
+define( 'PUBLICACOES_SUBMISSAO_VERSION', '1.0.3' );
 define( 'PUBLICACOES_SUBMISSAO_FILE', __FILE__ );
 define( 'PUBLICACOES_SUBMISSAO_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PUBLICACOES_SUBMISSAO_URL', plugin_dir_url( __FILE__ ) );
