@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Publicacoes_Submissao_Admin {
     public function __construct() {
         add_action( 'add_meta_boxes', array( $this, 'add_approval_meta_box' ) );
+        add_action( 'add_meta_boxes', array( $this, 'add_author_info_meta_box' ) );
         add_action( 'save_post_publicacoes', array( $this, 'save_approval_meta_box' ), 10, 2 );
         add_filter( 'manage_publicacoes_posts_columns', array( $this, 'register_columns' ) );
         add_action( 'manage_publicacoes_posts_custom_column', array( $this, 'render_columns' ), 10, 2 );
@@ -23,6 +24,17 @@ class Publicacoes_Submissao_Admin {
         );
     }
 
+    public function add_author_info_meta_box() {
+        add_meta_box(
+            'publicacoes_author_info',
+            __( 'Informações do Autor', 'publicacoes-submissao' ),
+            array( $this, 'render_author_info_meta_box' ),
+            'publicacoes',
+            'normal',
+            'high'
+        );
+    }
+
     public function render_approval_meta_box( $post ) {
         wp_nonce_field( 'publicacoes_save_approval', 'publicacoes_approval_nonce' );
         $approved = get_post_meta( $post->ID, '_publicacoes_aprovado', true );
@@ -31,6 +43,25 @@ class Publicacoes_Submissao_Admin {
             <input type="checkbox" name="publicacoes_aprovado" id="publicacoes_aprovado" value="1" <?php checked( $approved, '1' ); ?> />
             <?php esc_html_e( 'Marcar como aprovado', 'publicacoes-submissao' ); ?>
         </label>
+        <?php
+    }
+
+    public function render_author_info_meta_box( $post ) {
+        $nome = get_post_meta( $post->ID, '_publicacoes_nome', true );
+        $email = get_post_meta( $post->ID, '_publicacoes_email', true );
+        ?>
+        <div style="margin-bottom: 16px;">
+            <label for="publicacoes_nome_display">
+                <strong><?php esc_html_e( 'Nome do Autor', 'publicacoes-submissao' ); ?></strong>
+                <input type="text" id="publicacoes_nome_display" value="<?php echo esc_attr( $nome ); ?>" readonly style="width: 100%; padding: 8px; margin-top: 6px; border: 1px solid #ddd; border-radius: 4px; background-color: #f5f5f5;" />
+            </label>
+        </div>
+        <div>
+            <label for="publicacoes_email_display">
+                <strong><?php esc_html_e( 'Email do Autor', 'publicacoes-submissao' ); ?></strong>
+                <input type="email" id="publicacoes_email_display" value="<?php echo esc_attr( $email ); ?>" readonly style="width: 100%; padding: 8px; margin-top: 6px; border: 1px solid #ddd; border-radius: 4px; background-color: #f5f5f5;" />
+            </label>
+        </div>
         <?php
     }
 
