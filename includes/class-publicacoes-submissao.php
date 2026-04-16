@@ -65,7 +65,7 @@ class Publicacoes_Submissao {
             'has_archive'        => false,
             'show_in_menu'       => true,
             'taxonomies'         => array(),
-            'menu_icon'          => 'dashicons-format-image',
+            'menu_icon'          => 'dashicons-heart',
             'capability_type'    => 'post',
             'supports'           => array( 'title', 'editor', 'thumbnail', 'comments' ),
             'show_in_rest'       => false,
