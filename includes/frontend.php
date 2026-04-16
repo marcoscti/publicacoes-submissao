@@ -265,6 +265,7 @@ class Publicacoes_Submissao_Frontend
                     <button type="button" class="publicacoes-toggle-comments" aria-expanded="false">
                         <span class="publicacoes-action-icon">💬</span>
                         <?php esc_html_e('Comentar', 'publicacoes-submissao'); ?>
+                        <span class="publicacoes-comment-count">(<?php echo count($comments); ?>)</span>
                     </button>
                 </div>
                 <div class="publicacoes-card-text">
@@ -275,7 +276,7 @@ class Publicacoes_Submissao_Frontend
                     <?php endif; ?>
                 </div>
                 <div class="publicacoes-card-comments">
-                    <div class="publicacoes-comments-list">
+                    <div class="publicacoes-comments-list" style="display:none;">
                         <?php if (! empty($comments)) : ?>
                             <?php foreach ($comments as $comment) : ?>
                                 <div class="publicacoes-comment-item">

@@ -59,14 +59,22 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             var card = button.closest('.publicacoes-card');
             var form = card.querySelector('.publicacoes-comment-form');
+            var commentsList = card.querySelector('.publicacoes-comments-list');
             var expanded = button.getAttribute('aria-expanded') === 'true';
 
             if (form) {
                 form.style.display = expanded ? 'none' : 'block';
-                button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-                button.innerHTML = expanded
-                    ? '<span class="publicacoes-toggle-icon">💬</span> Comentar'
-                    : '<span class="publicacoes-toggle-icon">💬</span> Ocultar formulário';
+            }
+            if (commentsList) {
+                commentsList.style.display = expanded ? 'none' : 'block';
+            }
+            button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            if (expanded) {
+                var commentItems = commentsList.querySelectorAll('.publicacoes-comment-item');
+                var commentCount = commentItems.length;
+                button.innerHTML = '<span class="publicacoes-action-icon">💬</span> Comentar <span class="publicacoes-comment-count">(' + commentCount + ')</span>';
+            } else {
+                button.innerHTML = '<span class="publicacoes-action-icon">💬</span> Ocultar comentários';
             }
         });
     });
@@ -123,6 +131,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         commentsList.insertAdjacentHTML('beforeend', data.html);
                     }
                     form.reset();
+
+                    // Update comment count in button
+                    var card = form.closest('.publicacoes-card');
+                    var toggleButton = card.querySelector('.publicacoes-toggle-comments');
+                    if (toggleButton) {
+                        var commentItems = commentsList.querySelectorAll('.publicacoes-comment-item');
+                        var currentCount = commentItems.length;
+                        toggleButton.innerHTML = '<span class="publicacoes-action-icon">💬</span> Comentar <span class="publicacoes-comment-count">(' + currentCount + ')</span>';
+                    }
                 },
                 function (message) {
                     if (messageNode) {

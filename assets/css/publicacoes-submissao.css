@@ -199,10 +199,10 @@
   font-weight: 700;
 }
 
-.publicacoes-card-actions button:hover,
-.publicacoes-like-form button:hover,
-.publicacoes-toggle-comments:hover {
-  opacity: 0.94;
+.publicacoes-comment-count {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-left: 4px;
 }
 
 .publicacoes-card-text {
