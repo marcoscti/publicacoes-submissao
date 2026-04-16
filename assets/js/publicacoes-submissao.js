@@ -27,9 +27,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     likeForms.forEach(function (form) {
+        var button = form.querySelector('.publicacoes-like-button');
+        var postId = form.getAttribute('data-post-id');
+
+        // Verificar se já foi curtido nessa sessão
+        var likedPosts = JSON.parse(localStorage.getItem('publicacoes_liked') || '{}');
+        if (likedPosts[postId]) {
+            button.disabled = true;
+            button.classList.add('publicacoes-liked-disabled');
+            button.title = 'Você já curtiu este post nesta sessão';
+        }
+
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            var postId = form.getAttribute('data-post-id');
+
+            // Verificar novamente se já foi curtido
+            if (likedPosts[postId]) {
+                console.log('Este post já foi curtido nesta sessão');
+                return;
+            }
 
             ajaxRequest(
                 {
@@ -38,10 +54,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     post_id: postId,
                 },
                 function (data) {
-                    var button = form.querySelector('.publicacoes-like-button');
                     if (button) {
                         button.textContent = '❤️ ' + data.likes;
                         button.classList.add('publicacoes-heart-pulse');
+
+                        // Marcar como curtido no localStorage
+                        likedPosts[postId] = true;
+                        localStorage.setItem('publicacoes_liked', JSON.stringify(likedPosts));
+
+                        // Desabilitar botão após curtida
+                        button.disabled = true;
+                        button.classList.add('publicacoes-liked-disabled');
+                        button.title = 'Você já curtiu este post nesta sessão';
+
                         setTimeout(function () {
                             button.classList.remove('publicacoes-heart-pulse');
                         }, 600);
@@ -83,10 +108,12 @@ document.addEventListener('DOMContentLoaded', function () {
     readMoreButtons.forEach(function (button) {
         button.addEventListener('click', function () {
             var card = button.closest('.publicacoes-card');
+            var shortText = card.querySelector('.publicacoes-caption-short');
             var more = card.querySelector('.publicacoes-caption-more');
             var expanded = more.style.display === 'block';
 
-            if (more) {
+            if (more && shortText) {
+                shortText.style.display = expanded ? 'block' : 'none';
                 more.style.display = expanded ? 'none' : 'block';
                 button.textContent = expanded ? 'Leia mais' : 'Mostrar menos';
             }

@@ -247,8 +247,20 @@ class Publicacoes_Submissao_Frontend
         $caption_more = '';
 
         if (mb_strlen($caption_text) > $caption_limit) {
-            $caption_short = mb_substr($caption_text, 0, $caption_limit);
-            $caption_more = mb_substr($caption_text, $caption_limit);
+            // Trunca por caracteres
+            $truncated = mb_substr($caption_text, 0, $caption_limit);
+            
+            // Encontra o último espaço para não quebrar palavra
+            $last_space = mb_strrpos($truncated, ' ');
+            if ($last_space !== false && $last_space > 0) {
+                $caption_short = mb_substr($truncated, 0, $last_space);
+            } else {
+                $caption_short = $truncated;
+            }
+            
+            // O restante do texto começa onde o short termina
+            $caption_more = mb_substr($caption_text, mb_strlen($caption_short) . '');
+            $caption_more = ltrim($caption_more); // Remove espaço inicial
         }
         ?>
         <article class="publicacoes-card" data-post-id="<?php echo esc_attr($post_id); ?>">

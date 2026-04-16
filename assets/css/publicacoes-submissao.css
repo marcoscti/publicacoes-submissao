@@ -86,6 +86,8 @@
 .publicacoes-card-image {
   width: 100%;
   height: auto;
+  max-height: 522px;
+  object-fit: cover;
   display: block;
 }
 
@@ -143,6 +145,21 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+}
+
+.publicacoes-like-button:disabled,
+.publicacoes-like-button.publicacoes-liked-disabled {
+  background: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.publicacoes-like-button:disabled:hover,
+.publicacoes-like-button.publicacoes-liked-disabled:hover {
+  opacity: 0.7;
+  background: #ccc;
 }
 
 @keyframes publicacoes-heart-beat {
