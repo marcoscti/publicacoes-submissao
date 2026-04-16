@@ -2,7 +2,7 @@
 /*
 Plugin Name: Publicações por Visitantes
 Description: Permite envio de publicações por usuários não logados, moderação no admin, curtidas e comentários via AJAX.
-Version: 1.0.2
+Version: 1.0.3
 Author: Marcos Cordeiro
 Text Domain: publicacoes-submissao
 */
