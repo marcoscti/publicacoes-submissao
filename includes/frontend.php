@@ -256,7 +256,7 @@ class Publicacoes_Submissao_Frontend
     ?>
         <?php
         $caption_text = wp_strip_all_tags($post->post_content);
-        $caption_limit = 150;
+        $caption_limit = 90;
         $caption_short = $caption_text;
         $caption_more = '';
 
@@ -297,7 +297,7 @@ class Publicacoes_Submissao_Frontend
                 <div class="publicacoes-card-text">
                     <p class="publicacoes-caption-short"><?php echo esc_html($caption_short); ?><?php echo $caption_more ? '...' : ''; ?></p>
                     <?php if ($caption_more) : ?>
-                        <p class="publicacoes-caption-more" style="display:none;"><?php echo esc_html($caption_more); ?></p>
+                        <p class="publicacoes-caption-more" style="display:none;"><?php echo esc_html($caption_text); ?></p>
                         <button type="button" class="publicacoes-read-more"><?php esc_html_e('Leia mais', 'publicacoes-submissao'); ?></button>
                     <?php endif; ?>
                 </div>

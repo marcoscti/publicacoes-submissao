@@ -1,10 +1,11 @@
 .publicacoes-list-wrapper {
   margin: 0 auto 30px;
-  padding: 16px;
+  padding: 35px 0;
   border-radius: 10px;
   display: flex;
-  gap: 20px;
+  gap: 35px;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .publicacoes-form-wrapper {
   margin: 0 auto 30px;
@@ -69,7 +70,7 @@
 }
 
 .publicacoes-card {
-  max-width: 350px;
+  max-width: 400px;
   width: 100%;
   background: #fff;
   border: 1px solid #e6e6e6;
@@ -113,7 +114,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .publicacoes-card-actions form,
@@ -125,7 +126,7 @@
 
 .publicacoes-card-actions button {
   min-width: auto;
-  padding: 8px 14px;
+  padding: 4px 10px;
   border-radius: 999px;
   font-size: 0.92rem;
   font-weight: 600;
@@ -168,10 +169,12 @@
 }
 
 @keyframes publicacoes-heart-beat {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
-  10%, 30% {
+  10%,
+  30% {
     transform: scale(1.1);
   }
   50% {
@@ -184,29 +187,28 @@
 }
 
 .publicacoes-like-button.publicacoes-liked {
-    transform: scale(1.06);
-    box-shadow: 0 0 12px rgba(255, 0, 95, 0.4);
+  transform: scale(1.06);
+  box-shadow: 0 0 12px rgba(255, 0, 95, 0.4);
 }
 
 @keyframes publicacoes-pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.12);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .publicacoes-like-count-number.publicacoes-pulse {
-    animation: publicacoes-pulse 0.6s ease-out;
-    font-weight: 800;
+  animation: publicacoes-pulse 0.6s ease-out;
+  font-weight: 800;
   color: #111;
   background: #fff;
 }
-
 
 .publicacoes-like-count {
   display: inline-flex;
@@ -222,20 +224,20 @@
 }
 
 .publicacoes-comment-count {
-    font-size: 0.85rem;
-    opacity: 0.8;
-    margin-left: 4px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-left: 4px;
 }
 
 .publicacoes-card-text {
-  margin-top: 16px;
+  margin-top: 0px;
   color: #333;
   line-height: 1.6;
 }
 
 .publicacoes-caption-short,
 .publicacoes-caption-more {
-  margin: 0 0 12px;
+  margin: 0!important;
 }
 
 .publicacoes-caption-more {
@@ -245,21 +247,20 @@
 .publicacoes-read-more {
   display: inline-block;
   border: 1px solid #ff005f;
-  border-radius: 999px;
+  border-radius: 8px;
   background: transparent;
   color: #ff005f;
   cursor: pointer;
-  padding: 6px 14px;
-  font-size: 0.92rem;
+  padding: 2px 14px;
+  font-size: 0.7rem;
   text-transform: none;
-  margin-bottom: 20px;
 }
 
 .publicacoes-read-more:hover {
   background: rgba(255, 0, 95, 0.08);
 }
 
-..publicacoes-caption-more {
+.publicacoes-caption-more {
   display: none;
 }
 
