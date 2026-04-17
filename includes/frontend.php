@@ -199,11 +199,12 @@ class Publicacoes_Submissao_Frontend
     {
         wp_enqueue_style('publicacoes-submissao-style');
         wp_enqueue_script('publicacoes-submissao-script');
-
+        $paged = get_query_var('paged') ?: (get_query_var('page') ?: 1);
         $args = array(
             'post_type'      => 'publicacoes',
             'post_status'    => 'publish',
-            'posts_per_page' => -1,
+            'posts_per_page' => 6, // quantidade por página
+            'paged'          => $paged,
             'meta_query'     => array(
                 array(
                     'key'     => '_publicacoes_aprovado',
@@ -213,19 +214,32 @@ class Publicacoes_Submissao_Frontend
             ),
         );
 
-        $posts = get_posts($args);
+        $posts = new WP_Query($args);
+
+        if (is_wp_error($posts)) {
+            return $posts->get_error_message();
+        }
 
         ob_start();
     ?>
         <div class="publicacoes-list-wrapper">
-            <?php if (empty($posts)) : ?>
-                <p class="publicacoes-no-items"><?php esc_html_e('Nenhuma publicação aprovada encontrada.', 'publicacoes-submissao'); ?></p>
+            <?php if ($posts->have_posts()) : ?>
+                <?php while ($posts->have_posts()) : $posts->the_post(); ?>
+                    <?php $this->render_publicacao_card(get_post()); ?>
+                <?php endwhile; ?>
+            <?php else : ?>
+                <p>Nenhuma publicação encontrada.</p>
             <?php endif; ?>
 
-            <?php foreach ($posts as $post) : setup_postdata($post); ?>
-                <?php $this->render_publicacao_card($post); ?>
-            <?php endforeach;
-            wp_reset_postdata(); ?>
+            <?php wp_reset_postdata(); ?>
+        </div>
+        <div class="paginate">
+            <?php
+            echo paginate_links(array(
+                'total'   => $posts->max_num_pages,
+                'current' => $paged,
+            ));
+            ?>
         </div>
     <?php
         return ob_get_clean();
@@ -249,7 +263,7 @@ class Publicacoes_Submissao_Frontend
         if (mb_strlen($caption_text) > $caption_limit) {
             // Trunca por caracteres
             $truncated = mb_substr($caption_text, 0, $caption_limit);
-            
+
             // Encontra o último espaço para não quebrar palavra
             $last_space = mb_strrpos($truncated, ' ');
             if ($last_space !== false && $last_space > 0) {
@@ -257,7 +271,7 @@ class Publicacoes_Submissao_Frontend
             } else {
                 $caption_short = $truncated;
             }
-            
+
             // O restante do texto começa onde o short termina
             $caption_more = mb_substr($caption_text, mb_strlen($caption_short) . '');
             $caption_more = ltrim($caption_more); // Remove espaço inicial
