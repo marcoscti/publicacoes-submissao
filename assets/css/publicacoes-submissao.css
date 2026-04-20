@@ -1,5 +1,4 @@
-
-  .publicacoes-list-wrapper {
+.publicacoes-list-wrapper {
   margin: 0 auto 30px;
   padding: 35px 0;
   border-radius: 10px;
@@ -12,7 +11,7 @@
   margin: 0 auto 30px;
   padding: 16px;
   border-radius: 10px;
-  font-family: 'Monserrat', sans-serif!important;
+  font-family: "Monserrat", sans-serif !important;
 }
 .publicacoes-form-wrapper p,
 .publicacoes-card-body p,
@@ -28,12 +27,16 @@
 .publicacoes-comment-form input[type="email"],
 .publicacoes-comment-form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
 }
-
+.publicacoes-comment-form input[type="text"],
+.publicacoes-comment-form input[type="email"],
+.publicacoes-comment-form textarea {
+  padding: 4px;
+}
 .publicacoes-submit-button,
 .publicacoes-like-form button,
 .publicacoes-comment-form button {
@@ -45,12 +48,6 @@
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid #ccc;
-}
-
-.publicacoes-submit-button:hover,
-.publicacoes-like-form button:hover,
-.publicacoes-comment-form button:hover {
-  background: #005177;
 }
 
 .publicacoes-form-message {
@@ -79,9 +76,9 @@
   padding: 18px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  font-family: 'montserrat', sans-serif!important;
+  font-family: "montserrat", sans-serif !important;
 }
-.publicacoes-card:hover{
+.publicacoes-card:hover {
   box-shadow: #bf556170 0px 4px 6px;
 }
 
@@ -103,7 +100,7 @@
   display: block;
   aspect-ratio: 9 / 16;
 }
-.publicacoes-card-image:hover{
+.publicacoes-card-image:hover {
   transform: scale(1.5);
   transition-duration: 2s;
 }
@@ -127,7 +124,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 0px;
 }
 
 .publicacoes-card-actions form,
@@ -140,7 +137,7 @@
 .publicacoes-card-actions button {
   min-width: auto;
   padding: 4px;
-  border-radius: 999px;
+  border-radius: 4px;
   font-size: 0.92rem;
   font-weight: 400;
   text-transform: none;
@@ -156,7 +153,9 @@
   align-items: center;
   font-size: 1rem;
 }
-
+.publicacoes-toggle-comments{
+  color: #333;
+}
 .publicacoes-like-button {
   background: transparent;
   color: #fff;
@@ -248,7 +247,8 @@
 
 .publicacoes-caption-short,
 .publicacoes-caption-more {
-  margin: 0!important;
+  margin: 0 !important;
+  color: #3d1225;
 }
 
 .publicacoes-caption-more {
@@ -257,18 +257,14 @@
 
 .publicacoes-read-more {
   display: inline-block;
-  border: 1px solid #ff005f;
+  border: 1px solid BF5562;
   border-radius: 8px;
   background: transparent;
-  color: #ff005f;
+  color: #bf5562;
   cursor: pointer;
   padding: 2px 14px;
   font-size: 0.7rem;
   text-transform: none;
-}
-
-.publicacoes-read-more:hover {
-  background: rgba(255, 0, 95, 0.08);
 }
 
 .publicacoes-caption-more {
@@ -288,6 +284,7 @@
 
 .publicacoes-comment-form {
   display: none;
+  margin-top: 10px;
 }
 
 .publicacoes-like-count {
