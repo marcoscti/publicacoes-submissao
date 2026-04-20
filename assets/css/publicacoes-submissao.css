@@ -145,6 +145,8 @@
   align-items: center;
   gap: 2px;
   border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .publicacoes-action-icon {
