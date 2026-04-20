@@ -8,11 +8,14 @@
   flex-wrap: wrap;
   width: 100%;
 }
+.publicaoes-icon{
 
+}
 .publicacoes-form-wrapper {
   margin: 0 auto 30px;
   padding: 16px;
   border-radius: 10px;
+  font-family: 'Monserrat', sans-serif!important;
 }
 .publicacoes-form-wrapper p,
 .publicacoes-card-body p,
@@ -76,10 +79,15 @@
   width: 100%;
   background: #fff;
   border: 1px solid #e6e6e6;
-  border-radius: 18px;
+  padding: 18px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  font-family: 'montserrat', sans-serif!important;
 }
+.publicacoes-card:hover{
+  box-shadow: #bf556170 0px 4px 6px;
+}
+
 @media (max-width: 768px) {
   .publicacoes-card {
     max-width: 100%;
@@ -93,21 +101,27 @@
 .publicacoes-card-image {
   width: 100%;
   height: auto;
-  max-height: 522px;
+  max-height: 490px;
   object-fit: cover;
   display: block;
   aspect-ratio: 9 / 16;
 }
+.publicacoes-card-image:hover{
+  transform: scale(1.5);
+  transition-duration: 2s;
+}
 
 .publicacoes-card-body {
-  padding: 18px;
+  padding: 18px 0 0 0;
 }
 
 .publicacoes-card-author {
-  margin: 0 0 12px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #111;
+  font-family: "Dancing Script", cursive;
+  margin: 0 0 2px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #3d1225;
+  text-align: center;
 }
 
 .publicacoes-card-actions {
@@ -128,14 +142,15 @@
 
 .publicacoes-card-actions button {
   min-width: auto;
-  padding: 4px 10px;
+  padding: 4px;
   border-radius: 999px;
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
+  border: none;
 }
 
 .publicacoes-action-icon {
@@ -146,19 +161,18 @@
 }
 
 .publicacoes-like-button {
-  background: #ff005f;
-  border: none;
+  background: transparent;
   color: #fff;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  border: none;
 }
 
 .publicacoes-like-button:disabled,
 .publicacoes-like-button.publicacoes-liked-disabled {
-  background: #ccc;
   color: #999;
   cursor: not-allowed;
   opacity: 0.7;
@@ -167,7 +181,6 @@
 .publicacoes-like-button:disabled:hover,
 .publicacoes-like-button.publicacoes-liked-disabled:hover {
   opacity: 0.7;
-  background: #ccc;
 }
 
 @keyframes publicacoes-heart-beat {
@@ -190,7 +203,6 @@
 
 .publicacoes-like-button.publicacoes-liked {
   transform: scale(1.06);
-  box-shadow: 0 0 12px rgba(255, 0, 95, 0.4);
 }
 
 @keyframes publicacoes-pulse {
