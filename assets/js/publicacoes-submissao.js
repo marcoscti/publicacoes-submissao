@@ -97,9 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (expanded) {
                 var commentItems = commentsList.querySelectorAll('.publicacoes-comment-item');
                 var commentCount = commentItems.length;
-                button.innerHTML = '<span class="publicacoes-action-icon">💬</span> Comentar <span class="publicacoes-comment-count">(' + commentCount + ')</span>';
-            } else {
-                button.innerHTML = '<span class="publicacoes-action-icon">💬</span> Ocultar comentários';
+                button.innerHTML = '<span class="publicacoes-action-icon">💬</span> <span class="publicacoes-comment-count">' + commentCount + '</span>';
             }
         });
     });
