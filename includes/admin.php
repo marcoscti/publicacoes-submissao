@@ -98,7 +98,10 @@ class Publicacoes_Submissao_Admin
                 'ID' => $post_id,
                 'post_status' => 'publish',
             ));
-            wp_mail(get_post_meta($post->ID, '_publicacoes_email', true), "Sua publicação foi aprovada!", '<h1>Olá, ' . ${esc_html(get_post_meta($post->ID, '_publicacoes_nome', true))} . '!</h1><p>Seu depoimento foi validado e já está disponível na lista de publicações.</p>');
+            $email = get_post_meta($post->ID, '_publicacoes_email', true);
+            $name = get_post_meta($post->ID, '_publicacoes_nome', true);
+            $mensagem = "Olá, " . $name . " seu depoimento foi validado e já está disponível na página de homenagem ao dia das mães!.";
+            wp_mail($email, "Sua publicação foi aprovada!", $mensagem);
         }
 
         if ('0' === $approved && 'publish' === $post->post_status) {

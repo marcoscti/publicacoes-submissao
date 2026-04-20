@@ -149,7 +149,9 @@ class Publicacoes_Submissao_Frontend
         if ($attachment_id) {
             set_post_thumbnail($post_id, $attachment_id);
         }
-        wp_mail($email, "Seu depoimento foi recebido com sucesso!", '<h1>Olá, ' . ${esc_html($name)} . '!</h1><p>A sua o seu depoimento foi enviada com sucesso, asssim que for aprovada aparecerá na lista de publicações.</p>');
+        $mensagem = "Olá, " . $name . "! O seu depoimento foi recebido com sucesso. Assim que for aprovado, aparecerá na lista de publicações.";
+
+        wp_mail($email, "Seu depoimento foi recebido com sucesso!",$mensagem);
         return $post_id;
     }
 
