@@ -81,12 +81,13 @@ class Publicacoes_Submissao_Frontend
                     <input type="email" id="publicacoes_email" name="publicacoes_email" required />
                 </p>
                 <p>
-                    <label for="publicacoes_foto"><?php esc_html_e('Upload de imagem', 'publicacoes-submissao'); ?>*</label>
+                    <label for="publicacoes_foto"><?php esc_html_e('Envie sua foto (Apenas formato Vertical/Retrato)', 'publicacoes-submissao'); ?>*</label>
                     <input type="file" id="publicacoes_foto" name="publicacoes_foto" accept="image/*" required />
+                    <p>Use Apenas fotos verticais (Formato Celular em pé)</p>
                 </p>
                 <p>
                     <label for="publicacoes_legenda"><?php esc_html_e('Legenda', 'publicacoes-submissao'); ?>*</label>
-                    <textarea id="publicacoes_legenda" name="publicacoes_legenda" rows="5" maxlength="250" required></textarea>
+                    <textarea id="publicacoes_legenda" name="publicacoes_legenda" rows="3" maxlength="250" required></textarea>
                     <small><?php esc_html_e('Máximo de 250 caracteres.', 'publicacoes-submissao'); ?></small>
                 </p>
                 <p>
@@ -148,7 +149,7 @@ class Publicacoes_Submissao_Frontend
         if ($attachment_id) {
             set_post_thumbnail($post_id, $attachment_id);
         }
-
+        wp_mail($email, "Seu depoimento foi recebido com sucesso!", '<h1>Olá, ' . ${esc_html($name)} . '!</h1><p>A sua o seu depoimento foi enviada com sucesso, asssim que for aprovada aparecerá na lista de publicações.</p>');
         return $post_id;
     }
 
@@ -252,11 +253,11 @@ class Publicacoes_Submissao_Frontend
         $content   = apply_filters('the_content', $post->post_content);
         $likes     = absint(get_post_meta($post_id, '_publicacoes_likes_count', true));
         $comments  = get_comments(array('post_id' => $post_id, 'status' => 'approve'));
-        $thumbnail = get_the_post_thumbnail($post_id, 'medium', array('class' => 'publicacoes-card-image'));
+        $thumbnail = get_the_post_thumbnail($post_id, 'full', array('class' => 'publicacoes-card-image'));
     ?>
         <?php
         $caption_text = wp_strip_all_tags($post->post_content);
-        $caption_limit = 90;
+        $caption_limit = 45;
         $caption_short = $caption_text;
         $caption_more = '';
 
@@ -280,18 +281,18 @@ class Publicacoes_Submissao_Frontend
         <article class="publicacoes-card" data-post-id="<?php echo esc_attr($post_id); ?>">
             <div class="publicacoes-card-media"><?php echo $thumbnail ? $thumbnail : '<div class="publicacoes-card-noimage">' . esc_html__('Sem imagem', 'publicacoes-submissao') . '</div>'; ?></div>
             <div class="publicacoes-card-body">
-                <h3 class="publicacoes-card-author"><?php echo esc_html($name); ?></h3>
+                <h3 class="publicacoes-card-author"><?php echo esc_html($name);?></h3>
+                <div class="publicacoes-icon"></div>
                 <div class="publicacoes-card-actions">
                     <form class="publicacoes-like-form" data-post-id="<?php echo esc_attr($post_id); ?>">
                         <button type="submit" class="publicacoes-like-button">
-                            <?php esc_html_e('❤️', 'publicacoes-submissao'); ?>
+                            <span>❤️</span>
                             <?php echo esc_html($likes); ?>
                         </button>
                     </form>
                     <button type="button" class="publicacoes-toggle-comments" aria-expanded="false">
                         <span class="publicacoes-action-icon">💬</span>
-                        <?php esc_html_e('Comentar', 'publicacoes-submissao'); ?>
-                        <span class="publicacoes-comment-count">(<?php echo count($comments); ?>)</span>
+                        <span class="publicacoes-comment-count"><?php echo count($comments); ?></span>
                     </button>
                 </div>
                 <div class="publicacoes-card-text">
