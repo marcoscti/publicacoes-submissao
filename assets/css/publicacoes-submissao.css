@@ -1,3 +1,7 @@
+:root{
+  --primary-color: #3d1225;
+  --transparent-primary: #3d1225e3;
+}
 .publicacoes-list-wrapper {
   margin: 0 auto 30px;
   padding: 35px 0;
@@ -31,7 +35,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  outline-color: #bf5562;
+  outline-color: var(--primary-color);
 }
 .publicacoes-comment-form input[type="text"],
 .publicacoes-comment-form input[type="email"],
@@ -42,14 +46,14 @@
 .publicacoes-form-wrapper input[type="email"],
 .publicacoes-form-wrapper textarea {
   padding: 10px;
-  border-color: #BF5562;
+  border-color: var(--primary-color);
 }
 .publicacoes-submission-form {
-  color: #BF5562;
+  color: var(--primary-color);
   font-family: "Monserrat", sans-serif !important;
 }
 .publicacoes-submission-form .publicacoes-submit-button.file{
-  background: #BF5562;
+  background: var(--primary-color);
   color: #fff;
 }
 .publicacoes-submission-form .publicacoes-submit-button.file:hover{
@@ -66,7 +70,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid #BF5562;
+  border: 1px solid var(--primary-color);
 }
 
 .publicacoes-form-message {
@@ -278,10 +282,10 @@
 
 .publicacoes-read-more {
   display: inline-block;
-  border: 1px solid #BF5562;
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   background: transparent;
-  color: #bf5562;
+  color: var(--primary-color);
   cursor: pointer;
   padding: 2px 14px;
   font-size: 0.7rem;
