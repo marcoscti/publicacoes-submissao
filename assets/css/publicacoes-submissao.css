@@ -1,6 +1,6 @@
 :root{
-  --primary-color: #3d1225;
-  --transparent-primary: #3d1225e3;
+  --primary-color: #450a20;
+  --transparent-primary: rgba(61, 18, 37, 0.644)
 }
 .publicacoes-list-wrapper {
   margin: 0 auto 30px;
