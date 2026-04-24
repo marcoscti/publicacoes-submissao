@@ -81,17 +81,20 @@ class Publicacoes_Submissao_Frontend
                     <input type="email" id="publicacoes_email" name="publicacoes_email" required />
                 </p>
                 <p>
-                    <label for="publicacoes_foto"><?php esc_html_e('Envie sua foto (Apenas formato Vertical/Retrato)', 'publicacoes-submissao'); ?>*</label>
-                    <input type="file" id="publicacoes_foto" name="publicacoes_foto" accept="image/*" required />
-                <p>Use Apenas fotos verticais (Formato Celular em pé)</p>
-                </p>
-                <p>
                     <label for="publicacoes_legenda"><?php esc_html_e('Legenda', 'publicacoes-submissao'); ?>*</label>
                     <textarea id="publicacoes_legenda" name="publicacoes_legenda" rows="3" maxlength="250" required></textarea>
                     <small><?php esc_html_e('Máximo de 250 caracteres.', 'publicacoes-submissao'); ?></small>
                 </p>
                 <p>
-                    <button type="submit" class="publicacoes-submit-button"><?php esc_html_e('Enviar publicação', 'publicacoes-submissao'); ?></button>
+                    <label>
+                        <input type="file" id="publicacoes_foto" name="publicacoes_foto" accept="image/*" required style="display: none;" />
+                        <span class="publicacoes-submit-button file">Insira sua foto aqui</span>
+                        <small class="publicacoes-file-name"></small>
+                    </label>
+                    <p>Use Apenas fotos verticais (Formato Celular em pé)</p>
+                </p>
+                <p>
+                    <button type="submit" class="publicacoes-submit-button"><?php esc_html_e('Enviar Agora', 'publicacoes-submissao'); ?></button>
                 </p>
             </form>
         </div>
@@ -151,7 +154,7 @@ class Publicacoes_Submissao_Frontend
         }
         $mensagem = "Olá, " . $name . "! O seu depoimento foi recebido com sucesso. Assim que for aprovado, aparecerá na lista de publicações.";
 
-        wp_mail($email, "Seu depoimento foi recebido com sucesso!",$mensagem);
+        wp_mail($email, "Seu depoimento foi recebido com sucesso!", $mensagem);
         return $post_id;
     }
 

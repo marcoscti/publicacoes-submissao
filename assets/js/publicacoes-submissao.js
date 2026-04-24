@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     var likeForms = document.querySelectorAll('.publicacoes-like-form');
     var commentForms = document.querySelectorAll('.publicacoes-comment-form');
@@ -174,4 +175,30 @@ document.addEventListener('DOMContentLoaded', function () {
             );
         });
     });
+    function formInputFile() {
+    const fileInput = document.getElementById('publicacoes_foto');
+    const fileNameNode = document.querySelector('.publicacoes-file-name');
+
+    if (!fileInput || !fileNameNode) return;
+
+    fileInput.addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+            const fullName = this.files[0].name;
+
+            // separa nome e extensão
+            const lastDotIndex = fullName.lastIndexOf('.');
+            const name = lastDotIndex !== -1 ? fullName.substring(0, lastDotIndex) : fullName;
+            const extension = lastDotIndex !== -1 ? fullName.substring(lastDotIndex) : '';
+
+            // limita o nome (sem extensão)
+            const shortName = name.length > 15 
+                ? name.substring(0, 15) + '...' 
+                : name;
+
+            // junta tudo
+            fileNameNode.textContent = shortName + extension;
+        }
+    });
+}
+    formInputFile();
 });

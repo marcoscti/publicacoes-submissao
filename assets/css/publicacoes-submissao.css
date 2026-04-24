@@ -31,11 +31,30 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  outline-color: #bf5562;
 }
 .publicacoes-comment-form input[type="text"],
 .publicacoes-comment-form input[type="email"],
 .publicacoes-comment-form textarea {
   padding: 4px;
+}
+.publicacoes-form-wrapper input[type="text"],
+.publicacoes-form-wrapper input[type="email"],
+.publicacoes-form-wrapper textarea {
+  padding: 10px;
+  border-color: #BF5562;
+}
+.publicacoes-submission-form {
+  color: #BF5562;
+  font-family: "Monserrat", sans-serif !important;
+}
+.publicacoes-submission-form .publicacoes-submit-button.file{
+  background: #BF5562;
+  color: #fff;
+}
+.publicacoes-submission-form .publicacoes-submit-button.file:hover{
+  background: transparent;
+  color: #a94442;
 }
 .publicacoes-submit-button,
 .publicacoes-like-form button,
@@ -47,7 +66,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: 1px solid #BF5562;
 }
 
 .publicacoes-form-message {
