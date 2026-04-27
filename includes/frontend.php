@@ -81,7 +81,7 @@ class Publicacoes_Submissao_Frontend
                     <input type="email" id="publicacoes_email" name="publicacoes_email" required />
                 </p>
                 <p>
-                    <label for="publicacoes_legenda"><?php esc_html_e('Legenda', 'publicacoes-submissao'); ?>*</label>
+                    <label for="publicacoes_legenda">O que é ser mãe para você? *</label>
                     <textarea id="publicacoes_legenda" name="publicacoes_legenda" rows="3" maxlength="250" required></textarea>
                     <small><?php esc_html_e('Máximo de 250 caracteres.', 'publicacoes-submissao'); ?></small>
                 </p>
