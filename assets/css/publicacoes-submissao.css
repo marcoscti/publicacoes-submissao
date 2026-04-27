@@ -121,6 +121,11 @@
     max-width: 100%;
   }
 }
+@media (max-width: 980px) {
+  .publicacoes-orientations .orientation {
+    position: unset;
+  }
+}
 .publicacoes-card-media {
   width: 100%;
   overflow: hidden;
