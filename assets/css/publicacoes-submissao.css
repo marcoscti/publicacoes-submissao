@@ -1,6 +1,6 @@
-:root{
+:root {
   --primary-color: #450a20;
-  --transparent-primary: rgba(61, 18, 37, 0.644)
+  --transparent-primary: rgba(61, 18, 37, 0.644);
 }
 .publicacoes-list-wrapper {
   margin: 0 auto 30px;
@@ -23,7 +23,18 @@
   margin-bottom: 14px;
   display: block;
 }
-
+.publicacoes-orientations {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+.publicacoes-orientations .orientation {
+  position: absolute;
+  right: 0;
+}
 .publicacoes-form-wrapper input[type="text"],
 .publicacoes-form-wrapper input[type="email"],
 .publicacoes-form-wrapper textarea,
@@ -52,11 +63,11 @@
   color: var(--primary-color);
   font-family: "Monserrat", sans-serif !important;
 }
-.publicacoes-submission-form .publicacoes-submit-button.file{
+.publicacoes-submission-form .publicacoes-submit-button.file {
   background: var(--primary-color);
   color: #fff;
 }
-.publicacoes-submission-form .publicacoes-submit-button.file:hover{
+.publicacoes-submission-form .publicacoes-submit-button.file:hover {
   background: transparent;
   color: #a94442;
 }
@@ -178,7 +189,7 @@
   align-items: center;
   font-size: 1rem;
 }
-.publicacoes-toggle-comments{
+.publicacoes-toggle-comments {
   color: #333;
 }
 .publicacoes-like-button {
