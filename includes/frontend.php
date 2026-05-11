@@ -336,7 +336,7 @@ class Publicacoes_Submissao_Frontend
         <article class="publicacoes-card" data-post-id="<?php echo esc_attr($post_id); ?>">
             <div class="publicacoes-card-media"><?php echo $thumbnail ? $thumbnail : '<div class="publicacoes-card-noimage">' . esc_html__('Sem imagem', 'publicacoes-submissao') . '</div>'; ?></div>
             <div class="publicacoes-card-body">
-                <h3 class="publicacoes-card-author"><?php echo esc_html($name); ?></h3>
+                <h3 class="publicacoes-card-author"><?php echo esc_html(ucfirst(strtolower($name))); ?></h3>
                 <div class="publicacoes-icon"></div>
                 <div class="publicacoes-card-actions">
                     <form class="publicacoes-like-form" data-post-id="<?php echo esc_attr($post_id); ?>">
