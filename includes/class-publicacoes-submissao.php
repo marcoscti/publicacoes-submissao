@@ -82,7 +82,7 @@ class Publicacoes_Submissao
             'supports'           => array('title', 'editor', 'thumbnail', 'comments'),
             'show_in_rest'       => false,
         );
-
+        
         register_post_type('publicacoes', $args);
     }
 }
